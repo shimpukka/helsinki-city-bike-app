@@ -10,19 +10,19 @@ station_file_path = os.path.join(os.path.dirname(__file__), "stations.csv")
 
 # clear database before importing
 cursor.execute("DELETE FROM journey_model_journey")
+cursor.execute("DELETE FROM journey_model_station")
 connection.commit()
 
 # Import journeys
 with open(data_file_path, 'r') as file:
     csv_reader = csv.reader(file)
-    index = 0
+
     for line in csv_reader:
-        # For now, import only part of the data
-        if index < 100:
-            print(line)
-            cursor.execute("INSERT INTO journey_model_journey VALUES (?,?,?,?,?,?,?,?,?)", line)
-            connection.commit()
-        index += 1
+        # print(line)
+        cursor.execute("INSERT INTO journey_model_journey VALUES (?,?,?,?,?,?,?,?,?)", line)
+        connection.commit()
+
+print('Journey imported')
 
 # Import stations
 with open(station_file_path, 'r') as station_csv:
@@ -30,7 +30,9 @@ with open(station_file_path, 'r') as station_csv:
     
     j = 0
     for line in station_csv_reader:
+        
         if (j > 0):
+            # cursor.execute("INSERT OR IGNORE INTO journey_model_station VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", line)
             cursor.execute("INSERT INTO journey_model_station VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", line)
             connection.commit()
         j += 1

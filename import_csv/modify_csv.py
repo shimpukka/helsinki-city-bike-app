@@ -24,4 +24,3 @@ with open(source_file_path, 'r', encoding="utf-8-sig") as csv_file:
         for line in csv_reader: 
             if int(line['Duration (sec.)']) > 10 and float(line['Covered distance (m)']) > 10:
                 csv_writer.writerow(line)
-              
