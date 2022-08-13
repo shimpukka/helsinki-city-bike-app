@@ -1,13 +1,13 @@
 # Helsinki city bike data API
 
-An API to provide city bike data in Helsinki Captal area, Finland. 
+An API to provide city bike data in Helsinki Capital area, Finland. 
 
 ## End points
 Journeys made during May - July 2021
-`GET /api/journey`
+```GET /api/journey```
 
 Bike staitions
-`GET /api/station`
+```GET /api/station```
 
 ## How to use
 
@@ -31,8 +31,7 @@ $ python -m pip install django-cors-headers
 
 # Run the app
 $ python manage.py runserver
+```
 
 In your browser, open [http://localhost:8000/api/journey](http://localhost:8000/api/journey) to view journeys and [http://localhost:8000/api/station](http://localhost:8000/api/station) to view stations.
-
-```
 
